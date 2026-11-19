@@ -11,7 +11,8 @@ commercial refrigeration, Little Rock, AR — serving all of Arkansas since 2017
 ## For humans
 A static site built with [Astro](https://astro.build) + [Tailwind CSS](https://tailwindcss.com),
 deployed to GitHub Pages on every push to `main` (GitHub Actions). No backend —
-the free-estimate form is handled by Formspree.
+the free-estimate form POSTs to a config-driven endpoint (`site.formUrl` in
+`src/config.ts`), currently a blank placeholder pending the client's backend.
 
 ### Quick start
 ```bash
@@ -41,7 +42,9 @@ npm run preview  # preview the build
    ≤200KB).
 4. **GA4:** `site.ga4` in config is intentionally BLANK until the client sends
    the measurement ID. The snippet must render nothing when blank.
-5. **Forms:** Formspree → selimhan.dagtas@gmail.com (interim). Estimate form and
+5. **Forms:** native Astro POST to `site.formUrl` in `src/config.ts` (Formspree
+   dropped 2026-11-19). The endpoint is a blank placeholder — the backend is
+   intentionally non-functional until the client supplies it. Estimate form and
    the /reviews feedback form share the endpoint; feedback posts carry
    form_type=feedback. Change destinations only via `src/config.ts`.
 6. **Trusted-by logos:** 9 brands, uniform muted style. If a logo is

@@ -1,6 +1,12 @@
 # SPEC — HRS HVAC & Refrigeration Service Website
 
 Status: LOCKED (agreed with client owner via interview, 2026-11-18)
+Change note 2026-11-19: form backend re-scoped — Formspree DROPPED. Forms
+(estimate + /reviews feedback) are native Astro POSTs to the config-driven
+endpoint `site.formUrl` (src/config.ts), a blank placeholder for now; the
+backend is intentionally non-functional until the client supplies the
+endpoint. Email delivery out of QA scope until then. Also corrected the
+Routes header count (11 → 12).
 Project folder: /mnt/data/projects/hrsar
 
 ## Goal
@@ -14,7 +20,7 @@ family-owned since 2017, serving all of Arkansas. Live at hrsar.com.
 - Hours: Mon–Fri 8:00 AM – 4:30 PM; Closed Sat–Sun; 24/7 emergency service (incl. holidays)
 - Credentials: Licensed, Insured, Bonded · Manufacturer Certified · 24/7 emergency · Free estimates · Warranties · Fully stocked trucks
 - Google listing (5.0★, verified live 2026-11-18): https://maps.app.goo.gl/5kG57BRumTnVDidX8
-- Form destination (for now): selimhan.dagtas@gmail.com
+- Form destination: client will supply the backend endpoint later — config-driven via `site.formUrl` (blank placeholder for now)
 - Old site (asset + copy source): https://hrsar.com/ (HiBu, CDN: le-cdn.hibuwebsites.com/5c18325ef6f0423aa8533ec69aa4dc75/)
 
 ## Stack
@@ -24,7 +30,7 @@ family-owned since 2017, serving all of Arkansas. Live at hrsar.com.
 - DNS: client controls hrsar.com; at cutover hand over CNAME records
   (root → GitHub Pages CNAME mechanism; www → <owner>.github.io)
 
-## Routes (11)
+## Routes (12)
 1. /                       Home
 2. /services               Services hub
 3. /services/hvac-installation
@@ -35,7 +41,7 @@ family-owned since 2017, serving all of Arkansas. Live at hrsar.com.
 8. /services/commercial-refrigeration
 9. /about                  Family-owned story, trucks, certifications
 10. /projects               Gallery (old-site photos + truck photos)
-11. /contact                Free estimate form (Formspree)
+11. /contact                Free estimate form (native Astro → site.formUrl)
 12. /reviews                "Leave a review" star funnel (see Review flow)
 
 ## Review flow (/reviews)
@@ -46,10 +52,10 @@ Branded page (logo, on-brand colors, "How was your experience with HRS?"):
   no stable deep link to the review textbox; place page's "Write a review"
   is one tap away).
 - 1–3★ selected → feedback form: optional name + required textarea
-  ("Tell us what went wrong"), submitted via Formspree to
-  selimhan.dagtas@gmail.com with hidden field form_type=feedback (separable
-  from estimate requests); success state: "thanks — we'll reach out to make
-  it right".
+  ("Tell us what went wrong"), POSTs natively (Astro) to the config-driven
+  endpoint `site.formUrl` with hidden field form_type=feedback (separable from
+  estimate requests); success state: "thanks — we'll reach out to make it
+  right".
 - Linked from: home reviews section CTA, contact page, footer.
 
 ## Design direction
@@ -111,9 +117,13 @@ warranties, credentials). No invented awards/reviews/certifications.
   favicon ico. Total image payload per page < 1MB.
 
 ## Form
-Formspree endpoint → selimhan.dagtas@gmail.com. Fields: name, phone,
-service needed (select of 6), message. Honeypot + Turnstile optional.
-Success/failure states required. Test submission must land in inbox (QA gate).
+Formspree is DROPPED (2026-11-19). The form (estimate + /reviews feedback) is
+built natively in Astro and POSTs to a config-driven endpoint `site.formUrl`
+in src/config.ts. The endpoint is a placeholder (blank) for now — the backend
+is intentionally NON-FUNCTIONAL; the client will supply it later. Fields:
+name, phone, service needed (select of 6), message. Honeypot + Turnstile
+optional. Success/failure states required. Email delivery is explicitly out of
+QA scope until the client endpoint exists.
 
 ## SEO / Analytics
 - LocalBusiness (HVACBusiness) JSON-LD on all pages: name, phone, geo, hours,
@@ -127,9 +137,10 @@ Success/failure states required. Test submission must land in inbox (QA gate).
 1. `npm run build` clean, no warnings treated as blocking
 2. Lighthouse mobile ≥90 on Home: Performance, SEO, Accessibility, Best Practices
 3. All 12 routes return 200 on the live Pages URL with correct content
-4. Form test submission received at selimhan.dagtas@gmail.com
+4. Form validates and shows a proper success state on submit
 5. Review funnel: 4–5★ shows Google button with correct Maps URL (target=_blank);
-   1–3★ shows feedback form; test feedback lands in inbox with form_type=feedback
+   1–3★ shows feedback form; review funnel feedback form shows success state
+   (email delivery explicitly out of scope until the client endpoint exists)
 6. Hero image ≤500KB; page image payload <1MB
 7. tel: links open dialer; favicon renders; mobile responsive at 375/768/1280
 8. GA4 script absent from HTML while config is blank

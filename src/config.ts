@@ -8,7 +8,8 @@ export const site = {
   phoneHref: 'tel:+15013817751',
   email: 'selimhan.dagtas@gmail.com',
   mapsUrl: 'https://maps.app.goo.gl/5kG57BRumTnVDidX8',
-  // Formspree endpoint (https://formspree.io/f/xxxx) — set by INFRA card once created.
+  // Form endpoint (config-driven; Formspree dropped 2026-11-19).
+  // Client will supply backend endpoint later; form UI ships without a working backend (agreed 2026-11-19).
   formUrl: '',
   // GA4 measurement ID — intentionally BLANK. Snippet renders nothing until set.
   ga4: '',
