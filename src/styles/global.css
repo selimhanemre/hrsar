@@ -1,1 +1,65 @@
+/* ─── Google Fonts ─── */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+
 @import "tailwindcss";
+
+@theme {
+  /* Type */
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand blue */
+  --color-brand-50:  #EFF8FE;
+  --color-brand-100: #D8EEFC;
+  --color-brand-200: #B5E0F9;
+  --color-brand-300: #86CDF5;
+  --color-brand-400: #4FB6F0;
+  --color-brand-500: #129BE0;
+  --color-brand-600: #0E82C4;
+  --color-brand-700: #0C6FA8;
+  --color-brand-800: #0B527B;
+  --color-brand-900: #0B3D59;
+  --color-brand-950: #072436;
+
+  /* Accent — flame */
+  --color-accent-400: #FF8A52;
+  --color-accent-500: #F2652E;
+  --color-accent-600: #D84E1E;
+  --color-ember-500: #D22B3A;
+
+  /* Pine */
+  --color-pine-500: #2F8A3C;
+  --color-pine-700: #1E5C28;
+
+  /* Neutral scale */
+  --color-neutral-50:  #F5F8FA;
+  --color-neutral-100: #E9EEF2;
+  --color-neutral-200: #D5DFE7;
+  --color-neutral-300: #B2C2CE;
+  --color-neutral-400: #8AA0B0;
+  --color-neutral-500: #64809A;
+  --color-neutral-600: #4A637B;
+  --color-neutral-700: #3A4F63;
+  --color-neutral-800: #2B3A49;
+  --color-neutral-900: #22303D;
+  --color-neutral-950: #131D27;
+
+  /* Ink */
+  --color-ink: #2B2B2B;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
