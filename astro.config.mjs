@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   output: 'static',
   site: 'https://hrsar.com',
+  base: '/hrsar/',
   vite: {
     plugins: [tailwindcss()],
   },
