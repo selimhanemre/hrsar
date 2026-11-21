@@ -54,26 +54,88 @@
     reveals.forEach(function (el) { el.classList.add('in'); });
   }
 
-  /* ---------- Estimate form (demo, front-end only) ---------- */
+  /* ---------- Estimate form — mailto: prefill ----------------------------
+     The form opens the visitor's own email app with a prefilled request.
+
+     ★ SWAP POINT (GoHighLevel): the owner is replacing this mailto flow
+       with a GoHighLevel form later. When that happens:
+       1. set FORM_EMAIL / the handler below aside, and
+       2. give <form id="book-form"> an action="https://…gohighlevel endpoint…"
+           method="post" with the field names GH Level expects.
+     Everything else on this page keeps working unchanged.
+     -------------------------------------------------------------------- */
+  var FORM_EMAIL = 'selimhan.dagtas@gmail.com';
+
   var form = doc.getElementById('book-form');
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!form.reportValidity()) return;
-      var panel = form.closest('.form-panel') || form.parentElement;
+
+      var val = function (n) {
+        var el = form.querySelector('[name="' + n + '"]');
+        return el ? el.value.trim() : '';
+      };
+      var label = function (n) {
+        var sel = form.querySelector('[name="' + n + '"]');
+        return sel && sel.options ? sel.options[sel.selectedIndex].text : '';
+      };
+
+      var name = val('name');
+      var phone = val('phone');
+      var email = val('email');
+      var business = val('business');
+      var message = val('message');
+
+      var subject = 'Free estimate request' + (name ? ' — ' + name : '');
+      var lines = [
+        'Name: ' + name,
+        'Phone: ' + phone,
+        email ? 'Email: ' + email : '',
+        business ? 'Business: ' + business : '',
+        'What needs attention: ' + label('service'),
+        'Best time for a callback: ' + label('timing'),
+        '',
+        'Notes:',
+        message || '(none)'
+      ];
+      var href = 'mailto:' + FORM_EMAIL + '?' + new URLSearchParams({
+        subject: subject,
+        body: lines.join('\r\n')
+      }).toString();
+
+      window.location.href = href;
+
       var success = doc.getElementById('form-success');
       if (success) {
-        var phoneEl = form.querySelector('[name="phone"]');
-        if (phoneEl && phoneEl.value) {
-          var span = success.querySelector('strong[data-echo]');
-          if (span) span.textContent = phoneEl.value.trim();
-        }
         form.style.display = 'none';
         success.classList.add('show');
         success.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     });
+
+    var backBtn = doc.getElementById('form-back');
+    if (backBtn) {
+      backBtn.addEventListener('click', function () {
+        var success = doc.getElementById('form-success');
+        if (success) success.classList.remove('show');
+        form.style.display = '';
+        form.querySelector('[name="name"]').focus();
+      });
+    }
   }
+
+  /* ---------- Review "read more" expand (home) ---------- */
+  doc.querySelectorAll('.read-more').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var card = btn.closest('.quote-card');
+      if (!card) return;
+      var open = card.classList.toggle('is-expanded');
+      btn.setAttribute('aria-expanded', String(open));
+      var txt = btn.querySelector('.rm-text');
+      if (txt) txt.textContent = open ? 'Show less' : 'Read more';
+    });
+  });
 
   /* ---------- Year ---------- */
   var yr = doc.getElementById('year');
