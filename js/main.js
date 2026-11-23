@@ -125,18 +125,6 @@
     }
   }
 
-  /* ---------- Review "read more" expand (home) ---------- */
-  doc.querySelectorAll('.read-more').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var card = btn.closest('.quote-card');
-      if (!card) return;
-      var open = card.classList.toggle('is-expanded');
-      btn.setAttribute('aria-expanded', String(open));
-      var txt = btn.querySelector('.rm-text');
-      if (txt) txt.textContent = open ? 'Show less' : 'Read more';
-    });
-  });
-
   /* ---------- Year ---------- */
   var yr = doc.getElementById('year');
   if (yr) yr.textContent = String(new Date().getFullYear());

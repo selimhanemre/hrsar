@@ -21,13 +21,14 @@ Pure static HTML/CSS/JS, no build step. Served by GitHub Pages from the `gh-page
 ## Design direction
 
 - Modern. Palette: fiery red primary (heating), cool blue secondary (cooling), leaf green tasteful accent.
-- Real HRS logo in header (icon), footer (full-body), and favicon.
-- Hero keeps the demo layout + `Logo_HRS_2024_Full-Body-v2.png` on the right.
+- Real HRS logo in header (icon), footer (full-body), and favicon. Header icon PNG is trimmed to the mark (no internal padding) — keep it that way.
+- Hero keeps the demo layout; right column is the booking card only (full-body hero logo removed on client revision, 2026-11-22).
+- No utility bar (removed site-wide on client revision, 2026-11-22). Header must stay one line at 1024px: phone `white-space: nowrap`, `nav-close` + in-nav CTA are mobile-only.
 - Backgrounds / WhatsApp photos used sparingly.
 
 ## Home
 
-- 3 real reviews (Jim T, Travis Cassell, Sabrina Langston) in the existing quote grid; long review clamped with an expand control.
+- 3 real reviews (Jim T, Travis Cassell, Sabrina Langston) in the existing quote grid; quotes shortened to similar length with leading/trailing ellipses (client-selected excerpts, no clamp/expand mechanism).
 - "Trusted by" marquee of all 9 client logos — pause on hover + honor `prefers-reduced-motion`.
 
 ## Contact
