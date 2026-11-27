@@ -52,20 +52,6 @@
     });
   }
 
-  /* ---------- Logo marquee pause/play control (WCAG 2.2.2) ---------- */
-  var marqueeBtn = doc.querySelector('.marquee-toggle');
-  var marqueeWrap = doc.querySelector('[data-marquee]');
-  if (marqueeBtn && marqueeWrap) {
-    marqueeBtn.addEventListener('click', function () {
-      var paused = marqueeWrap.classList.toggle('is-paused');
-      marqueeBtn.textContent = paused ? 'Play' : 'Pause';
-      marqueeBtn.setAttribute(
-        'aria-label',
-        paused ? 'Play client logo carousel' : 'Pause client logo carousel'
-      );
-    });
-  }
-
   /* ---------- Reveal on scroll ---------- */
   var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var reveals = Array.prototype.slice.call(doc.querySelectorAll('.reveal'));
@@ -150,6 +136,51 @@
         if (success) success.classList.remove('show');
         form.style.display = '';
         form.querySelector('[name="name"]').focus();
+      });
+    }
+  }
+
+  /* ---------- Hero quick estimate form — mailto: prefill ---------- */
+  var heroForm = doc.getElementById('hero-estimate-form');
+  if (heroForm) {
+    var heroSuccess = doc.getElementById('hero-form-success');
+    var heroBack = doc.getElementById('hero-form-back');
+
+    heroForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!heroForm.reportValidity()) {
+        var firstInvalid = heroForm.querySelector(':invalid');
+        if (firstInvalid) firstInvalid.focus();
+        return;
+      }
+
+      var hName = heroForm.querySelector('[name="name"]').value.trim();
+      var hPhone = heroForm.querySelector('[name="phone"]').value.trim();
+      var hServiceEl = heroForm.querySelector('[name="service"]');
+      var hService = hServiceEl ? hServiceEl.value : '';
+
+      var lines = [
+        'Name / Business: ' + hName,
+        'Phone: ' + hPhone,
+        'System / Service: ' + hService
+      ];
+
+      window.location.href = 'mailto:' + FORM_EMAIL + '?' + new URLSearchParams({
+        subject: 'Free Commercial Estimate — ' + hName,
+        body: lines.join('\r\n')
+      }).toString();
+
+      if (heroSuccess) {
+        heroForm.hidden = true;
+        heroSuccess.hidden = false;
+      }
+    });
+
+    if (heroBack) {
+      heroBack.addEventListener('click', function () {
+        if (heroSuccess) heroSuccess.hidden = true;
+        heroForm.hidden = false;
+        heroForm.querySelector('[name="name"]').focus();
       });
     }
   }
