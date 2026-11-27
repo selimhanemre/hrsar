@@ -199,8 +199,9 @@
           </div>
         </div>
 
-        <div class="quote-grid">
-          <article class="quote-card">
+        <div class="carousel-wrap" data-mobile-carousel="reviews" aria-roledescription="carousel" aria-label="Customer reviews">
+        <div class="quote-grid carousel-track-mobile" tabindex="0" role="group" aria-label="Customer review slides">
+          <article class="quote-card" role="group" aria-roledescription="slide" aria-label="1 of 3" data-marker-name="Review 1">
             <div class="quote-top">
               <div class="stars" aria-label="5 out of 5 stars">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg>
@@ -217,7 +218,7 @@
             </footer>
           </article>
 
-          <article class="quote-card">
+          <article class="quote-card" role="group" aria-roledescription="slide" aria-label="2 of 3" data-marker-name="Review 2">
             <div class="quote-top">
               <div class="stars" aria-label="5 out of 5 stars">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg>
@@ -234,7 +235,7 @@
             </footer>
           </article>
 
-          <article class="quote-card">
+          <article class="quote-card" role="group" aria-roledescription="slide" aria-label="3 of 3" data-marker-name="Review 3">
             <div class="quote-top">
               <div class="stars" aria-label="5 out of 5 stars">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg>
@@ -250,6 +251,17 @@
               </div>
             </footer>
           </article>
+        </div>
+        <div class="carousel-bar">
+          <button class="carousel-btn" type="button" data-direction="previous" aria-label="Previous review">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <nav class="carousel-markers" aria-label="Choose a review"></nav>
+          <button class="carousel-btn" type="button" data-direction="next" aria-label="Next review">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+          <p class="visually-hidden" role="status" aria-live="polite"></p>
+        </div>
         </div>
       </div>
     </section>
@@ -272,27 +284,39 @@
           <h2 id="sectors-title">Engineered for high-demand facilities.</h2>
           <p class="lede">Every commercial site has different compliance stakes. We service the critical equipment that keeps your doors open and inspections green.</p>
         </div>
-        <div class="sector-grid">
-          <article class="sector-card reveal">
+        <div class="carousel-wrap" data-mobile-carousel="sectors" aria-roledescription="carousel" aria-label="Commercial sectors">
+        <div class="sector-grid carousel-track-mobile" tabindex="0" role="group" aria-label="Commercial sector slides">
+          <article class="sector-card reveal" role="group" aria-roledescription="slide" aria-label="1 of 4" data-marker-name="Restaurants & QSRs">
             <span class="sector-code">01 · Foodservice</span>
             <h3>Restaurants &amp; QSRs</h3>
             <p>Walk-in coolers, prep-line refrigeration, ice machines, make-up air, and code-compliant kitchen exhaust hoods.</p>
           </article>
-          <article class="sector-card cool reveal reveal-d1">
+          <article class="sector-card cool reveal reveal-d1" role="group" aria-roledescription="slide" aria-label="2 of 4" data-marker-name="Convenience & Travel Plazas">
             <span class="sector-code">02 · Cold Chain</span>
             <h3>Convenience &amp; Travel Plazas</h3>
             <p>24-hour beer caves, display merchandisers, fountain cooling, and high-tonnage rooftop units under heavy door traffic.</p>
           </article>
-          <article class="sector-card eco reveal reveal-d2">
+          <article class="sector-card eco reveal reveal-d2" role="group" aria-roledescription="slide" aria-label="3 of 4" data-marker-name="Healthcare & Medical Clinics">
             <span class="sector-code">03 · Critical Care</span>
             <h3>Healthcare &amp; Medical Clinics</h3>
             <p>Controlled air quality, pharmacy &amp; lab refrigeration, quiet zoned comfort, and documented PM compliance files.</p>
           </article>
-          <article class="sector-card reveal reveal-d3">
+          <article class="sector-card reveal reveal-d3" role="group" aria-roledescription="slide" aria-label="4 of 4" data-marker-name="Offices, Retail & Industrial">
             <span class="sector-code">04 · Commercial</span>
             <h3>Offices, Retail &amp; Industrial</h3>
             <p>Multi-unit RTU fleets, packaged systems, server-room mini-splits, and scheduled seasonal maintenance agreements.</p>
           </article>
+        </div>
+        <div class="carousel-bar">
+          <button class="carousel-btn" type="button" data-direction="previous" aria-label="Previous sector">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <nav class="carousel-markers" aria-label="Choose a commercial sector"></nav>
+          <button class="carousel-btn" type="button" data-direction="next" aria-label="Next sector">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+          <p class="visually-hidden" role="status" aria-live="polite"></p>
+        </div>
         </div>
       </div>
     </section>
@@ -306,8 +330,9 @@
           <p class="lede">From a walk-in losing temperature during prep to a rooftop unit tripping on high head pressure, our trucks are built to resolve it.</p>
         </div>
 
-        <div class="card-grid">
-          <article class="svc-card reveal">
+        <div class="carousel-wrap" data-mobile-carousel="services" aria-roledescription="carousel" aria-label="Core commercial capabilities">
+        <div class="card-grid carousel-track-mobile" tabindex="0" role="group" aria-label="Commercial capability slides">
+          <article class="svc-card reveal" role="group" aria-roledescription="slide" aria-label="1 of 6" data-marker-name="Commercial HVAC">
             <div class="tile" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
             </div>
@@ -319,7 +344,7 @@
             </div>
           </article>
 
-          <article class="svc-card cool reveal reveal-d1">
+          <article class="svc-card cool reveal reveal-d1" role="group" aria-roledescription="slide" aria-label="2 of 6" data-marker-name="Commercial Refrigeration">
             <div class="tile" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M5 10h14M9 6h.01M9 14h.01"/></svg>
             </div>
@@ -331,7 +356,7 @@
             </div>
           </article>
 
-          <article class="svc-card reveal reveal-d2">
+          <article class="svc-card reveal reveal-d2" role="group" aria-roledescription="slide" aria-label="3 of 6" data-marker-name="Kitchen Exhaust & Hoods">
             <div class="tile" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20h14v-9a3 3 0 0 0-3-3H8a3 3 0 0 0-3 3v9Z"/><path d="M9 8V5M12 8V3.5M15 8V5"/></svg>
             </div>
@@ -343,7 +368,7 @@
             </div>
           </article>
 
-          <article class="svc-card reveal">
+          <article class="svc-card reveal" role="group" aria-roledescription="slide" aria-label="4 of 6" data-marker-name="24/7 Emergency Dispatch">
             <div class="tile" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14Z"/></svg>
             </div>
@@ -355,7 +380,7 @@
             </div>
           </article>
 
-          <article class="svc-card cool reveal reveal-d1">
+          <article class="svc-card cool reveal reveal-d1" role="group" aria-roledescription="slide" aria-label="5 of 6" data-marker-name="Ductless Mini-Splits">
             <div class="tile" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M3.3 7l17.4 10M20.7 7 3.3 17"/></svg>
             </div>
@@ -367,7 +392,7 @@
             </div>
           </article>
 
-          <article class="svc-card eco reveal reveal-d2">
+          <article class="svc-card eco reveal reveal-d2" role="group" aria-roledescription="slide" aria-label="6 of 6" data-marker-name="Preventive Maintenance">
             <div class="tile" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
             </div>
@@ -378,6 +403,17 @@
               <a class="link-arrow" href="services.html#maintenance">Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
             </div>
           </article>
+        </div>
+        <div class="carousel-bar">
+          <button class="carousel-btn" type="button" data-direction="previous" aria-label="Previous service">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <nav class="carousel-markers" aria-label="Choose a service"></nav>
+          <button class="carousel-btn" type="button" data-direction="next" aria-label="Next service">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+          <p class="visually-hidden" role="status" aria-live="polite"></p>
+        </div>
         </div>
       </div>
     </section>
