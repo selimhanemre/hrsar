@@ -1,4 +1,4 @@
-/* HRS demo site — progressive enhancement, ~3KB. No frameworks. */
+/* HRS Commercial HVAC & Refrigeration — progressive enhancement. No frameworks. */
 (function () {
   'use strict';
 
@@ -17,30 +17,59 @@
   /* ---------- Mobile nav ---------- */
   var navToggle = doc.querySelector('.nav-toggle');
   var navClose = doc.querySelector('.nav-close');
+  var mainEl = doc.querySelector('main');
+  var footerEl = doc.querySelector('footer');
   if (navToggle) {
+    var setBackgroundInert = function (state) {
+      if (mainEl) mainEl.inert = state;
+      if (footerEl) footerEl.inert = state;
+    };
     var open = function () {
       doc.body.classList.add('nav-open');
       navToggle.setAttribute('aria-expanded', 'true');
+      setBackgroundInert(true);
       var first = doc.querySelector('.nav a');
       if (first) first.focus();
     };
     var close = function () {
+      var wasOpen = doc.body.classList.contains('nav-open');
       doc.body.classList.remove('nav-open');
       navToggle.setAttribute('aria-expanded', 'false');
+      setBackgroundInert(false);
+      if (wasOpen) navToggle.focus();
     };
     navToggle.addEventListener('click', open);
     if (navClose) navClose.addEventListener('click', close);
     doc.querySelectorAll('.nav a').forEach(function (a) {
-      a.addEventListener('click', close);
+      a.addEventListener('click', function () {
+        doc.body.classList.remove('nav-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        setBackgroundInert(false);
+      });
     });
     doc.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && doc.body.classList.contains('nav-open')) close();
     });
   }
 
+  /* ---------- Logo marquee pause/play control (WCAG 2.2.2) ---------- */
+  var marqueeBtn = doc.querySelector('.marquee-toggle');
+  var marqueeWrap = doc.querySelector('[data-marquee]');
+  if (marqueeBtn && marqueeWrap) {
+    marqueeBtn.addEventListener('click', function () {
+      var paused = marqueeWrap.classList.toggle('is-paused');
+      marqueeBtn.textContent = paused ? 'Play' : 'Pause';
+      marqueeBtn.setAttribute(
+        'aria-label',
+        paused ? 'Play client logo carousel' : 'Pause client logo carousel'
+      );
+    });
+  }
+
   /* ---------- Reveal on scroll ---------- */
+  var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var reveals = Array.prototype.slice.call(doc.querySelectorAll('.reveal'));
-  if (reveals.length && 'IntersectionObserver' in window) {
+  if (!prefersReduced && reveals.length && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (en.isIntersecting) {
@@ -48,7 +77,7 @@
           io.unobserve(en.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
     reveals.forEach(function (el) { io.observe(el); });
   } else {
     reveals.forEach(function (el) { el.classList.add('in'); });
@@ -87,12 +116,12 @@
       var business = val('business');
       var message = val('message');
 
-      var subject = 'Free estimate request' + (name ? ' — ' + name : '');
+      var subject = 'Commercial estimate request' + (business ? ' — ' + business : (name ? ' — ' + name : ''));
       var lines = [
         'Name: ' + name,
         'Phone: ' + phone,
         email ? 'Email: ' + email : '',
-        business ? 'Business: ' + business : '',
+        business ? 'Business / Facility: ' + business : '',
         'What needs attention: ' + label('service'),
         'Best time for a callback: ' + label('timing'),
         '',
@@ -101,7 +130,7 @@
       ];
       var href = 'mailto:' + FORM_EMAIL + '?' + new URLSearchParams({
         subject: subject,
-        body: lines.join('\r\n')
+        body: lines.filter(function (l, idx) { return l !== '' || idx === 6; }).join('\r\n')
       }).toString();
 
       window.location.href = href;

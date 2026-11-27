@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Travis Cassell profile placeholder">
+  <defs>
+    <linearGradient id="bg-tc" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1B4869"/>
+      <stop offset="100%" stop-color="#0E2436"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="64" fill="url(#bg-tc)"/>
+  <circle cx="64" cy="48" r="21" fill="#9BC0DA" opacity="0.9"/>
+  <path d="M24 114c4-22 20-34 40-34s36 12 40 34" fill="#9BC0DA" opacity="0.9"/>
+  <circle cx="96" cy="96" r="18" fill="#1478A8" stroke="#0E2436" stroke-width="3"/>
+  <text x="96" y="101" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">TC</text>
+</svg>
